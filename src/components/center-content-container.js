@@ -3,7 +3,7 @@
 import CustomWebcam from './custom-webcam';
 import WebcamCapture from './webcam-capture'
 
-import hoodie from './hoodie.png';
+import hoodie from '../img/hoodie.png';
 
 
 const CenterContentContainer = () => {
