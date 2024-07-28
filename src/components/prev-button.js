@@ -1,8 +1,5 @@
-
-
-const PrevButton = ()=> {
-
-    return <button>previous</button>
-}
+const PrevButton = ({ handleClick }) => {
+  return <button onClick={handleClick}>previous</button>;
+};
 
 export default PrevButton;

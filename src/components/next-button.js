@@ -1,8 +1,5 @@
-
-
-const NextButton = ()=> {
-
-    return <button>next</button>
-}
+const NextButton = ({ handleClick }) => {
+  return <button onClick={handleClick}>next</button>;
+};
 
 export default NextButton;
