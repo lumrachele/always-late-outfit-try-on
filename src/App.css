@@ -2,25 +2,48 @@
   text-align: center;
 }
 
-
 .main-container {
   background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: row;
+  background-image: url("./img/background.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
 }
 
 .center-content-container {
   display: flex;
-  contain: content;
+  flex-direction: column;
+  height: 100vh;
+  background-image: url("./img/player.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  align-content: center;
 }
 
-.next-button-container, .prev-button-container {
-display: flex;
+.video-background {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 125px;
+}
+
+.next-button-container,
+.prev-button-container {
+  display: flex;
+}
+
+.prev-button,
+.next-button {
+  border-radius: 100%;
+  height: 40px;
+  width: 40px;
 }
 
 .App-link {
@@ -35,8 +58,8 @@ display: flex;
 }
 
 .webcam-capture-with-screenshot {
-  display: flex;
-  flex-direction: column;
+  /* display: flex;
+  justify-content: center; */
 }
 
 /* .App-logo {

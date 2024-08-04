@@ -40,21 +40,21 @@ const WebcamCapture = () => {
           <Webcam
             audio={false}
             ref={webcamRef}
-            videoConstraints={{ deviceId: device.deviceId, width: 600 }}
+            videoConstraints={{ deviceId: device.deviceId, width: 500 }}
             onUserMedia={onUserMedia}
             screenshotFormat="image/jpeg"
           />
-          <button onClick={capturePhoto}>Capture</button>
-          <button onClick={() => setUrl(null)}>Refresh</button>
+          {/* <button onClick={capturePhoto}>Capture</button>
+          <button onClick={() => setUrl(null)}>Refresh</button> */}
           {/* {device.label || `Device ${key + 1}`} */}
-          {url && (
+          {/* {url && (
             <div>
               <img src={url} alt="Screenshot" />
               <a download target="_blank" href={url}>
                 download
               </a>
             </div>
-          )}
+          )} */}
         </div>
       ))}
     </>

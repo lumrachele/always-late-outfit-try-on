@@ -1,5 +1,5 @@
 const NextButton = ({ handleClick }) => {
-  return <button onClick={handleClick}>next</button>;
+  return <button className="next-button" onClick={handleClick}></button>;
 };
 
 export default NextButton;

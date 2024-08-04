@@ -1,4 +1,4 @@
-import PrevButton from "./prev-button.js";
+import NavButton from "./nav-button.js";
 import { useCallback, useContext } from "react";
 import { AppContext } from "../App";
 import { tops } from "./constants.js";
@@ -15,7 +15,7 @@ const PrevButtonContainer = () => {
 
   return (
     <div className="prev-button-container">
-      <PrevButton handleClick={handleClick} />
+      <NavButton handleClick={handleClick} />
     </div>
   );
 };
