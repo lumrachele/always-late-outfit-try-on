@@ -40,7 +40,7 @@ const WebcamCapture = () => {
           <Webcam
             audio={false}
             ref={webcamRef}
-            videoConstraints={{ deviceId: device.deviceId, width: 500 }}
+            videoConstraints={{ deviceId: device.deviceId, width: 800 }}
             onUserMedia={onUserMedia}
             screenshotFormat="image/jpeg"
           />
