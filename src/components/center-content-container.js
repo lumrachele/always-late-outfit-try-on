@@ -7,6 +7,7 @@ import { tops } from "./constants.js";
 import player from "../img/player.png";
 import NavButton from "./nav-button";
 import Canvas from "./canvas";
+import alwaysLateLogo from "../img/always-late-logo.gif";
 
 const CenterContentContainer = () => {
   const { currentTopIndex, setCurrentTopIndex } = useContext(AppContext);
@@ -56,13 +57,13 @@ const CenterContentContainer = () => {
 
   return (
     <div className="center-content-container">
-      {/* <div className=""> */}
       {/* <Canvas draw={draw} /> */}
       {/* <CustomWebcam/> */}
 
       <div className="webcam-image-container">
         <WebcamCapture />
         <img className="player-image" src={player} />
+        <img className="always-late-logo" src={alwaysLateLogo} />
         <img
           src={tops[currentTopIndex]}
           className="current-clothing-top"
@@ -79,7 +80,6 @@ const CenterContentContainer = () => {
           handleClick={handleClickNext}
         />
       </div>
-      {/* </div> */}
 
       {/* <div className=""> */}
       {/* </div> */}
