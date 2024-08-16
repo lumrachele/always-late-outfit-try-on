@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useCallback } from "react";
 import Webcam from "react-webcam";
 
 const WebcamCapture = () => {
@@ -9,12 +9,16 @@ const WebcamCapture = () => {
 
   // keeping this so that we can detect another webcam when provided
   const handleDevices = React.useCallback(
-    (mediaDevices) =>
-      setDevices(mediaDevices.filter(({ kind }) => kind === "videoinput")),
+    (mediaDevices) => {
+      console.log("rach mediaDevices", mediaDevices);
+      return setDevices(
+        mediaDevices.filter(({ kind }) => kind === "videoinput")
+      );
+    },
     [setDevices]
   );
 
-  React.useEffect(() => {
+  useEffect(() => {
     navigator.mediaDevices.enumerateDevices().then(handleDevices);
   }, [handleDevices]);
 
@@ -26,37 +30,67 @@ const WebcamCapture = () => {
   }, [webcamRef]);
 
   const onUserMedia = (e) => {
-    // console.log(e);
+    console.log(e);
   };
 
-  // const handleDownload = () =>{
-  //     window.open(this.state.url);
-  // }
+  const handleDownload = () => {
+    window.open(this.state.url);
+  };
+
+  const renderExternalWebcam = useCallback(() => {
+    const externalWebcam = devices?.find((device) => {
+      return device?.label.includes("icspring camera");
+    });
+
+    return (
+      <Webcam
+        audio={false}
+        ref={webcamRef}
+        videoConstraints={{ deviceId: externalWebcam?.deviceId, width: 800 }}
+        onUserMedia={onUserMedia}
+        d
+        screenshotFormat="image/jpeg"
+      />
+    );
+  }, [devices]);
+
+  const renderAllWebcams = useCallback(() => {
+    return devices?.map((device, key) => (
+      <Webcam
+        audio={false}
+        ref={webcamRef}
+        videoConstraints={{ deviceId: device.deviceId, width: 800 }}
+        onUserMedia={onUserMedia}
+        d
+        key={key}
+        screenshotFormat="image/jpeg"
+      />
+    ));
+  }, [devices]);
+
+  const renderCaptureAndScreenshot = useCallback(() => {
+    // captures only the camera and not the full screen
+    return (
+      <>
+        <button onClick={capturePhoto}>Capture</button>
+        <button onClick={() => setUrl(null)}>Refresh</button>
+        {url && (
+          <div>
+            <img src={url} alt="Screenshot" />
+            <a download target="_blank" href={url}>
+              download
+            </a>
+          </div>
+        )}
+      </>
+    );
+  }, []);
 
   return (
     <>
-      {devices.map((device, key) => (
-        <div key={key} className="webcam-capture-with-screenshot">
-          <Webcam
-            audio={false}
-            ref={webcamRef}
-            videoConstraints={{ deviceId: device.deviceId, width: 800 }}
-            onUserMedia={onUserMedia}
-            screenshotFormat="image/jpeg"
-          />
-          {/* <button onClick={capturePhoto}>Capture</button>
-          <button onClick={() => setUrl(null)}>Refresh</button> */}
-          {/* {device.label || `Device ${key + 1}`} */}
-          {/* {url && (
-            <div>
-              <img src={url} alt="Screenshot" />
-              <a download target="_blank" href={url}>
-                download
-              </a>
-            </div>
-          )} */}
-        </div>
-      ))}
+      <div className="webcam-capture-with-screenshot">
+        {renderExternalWebcam()}
+      </div>
     </>
   );
 };

@@ -3,7 +3,7 @@ import { useContext, useCallback, useEffect } from "react";
 import { AppContext } from "../App";
 import CustomWebcam from "./custom-webcam";
 import WebcamCapture from "./webcam-capture";
-import { tops } from "./constants.js";
+import { tops, topClassNames } from "./constants.js";
 import player from "../img/player.png";
 import NavButton from "./nav-button";
 import Canvas from "./canvas";
@@ -66,7 +66,7 @@ const CenterContentContainer = () => {
         <img className="always-late-logo" src={alwaysLateLogo} />
         <img
           src={tops[currentTopIndex]}
-          className="current-clothing-top"
+          className={`current-clothing-top ${topClassNames[currentTopIndex]}`}
           alt={tops[currentTopIndex]}
         />
       </div>
@@ -80,9 +80,6 @@ const CenterContentContainer = () => {
           handleClick={handleClickNext}
         />
       </div>
-
-      {/* <div className=""> */}
-      {/* </div> */}
     </div>
   );
 };

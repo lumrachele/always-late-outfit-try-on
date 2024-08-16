@@ -11,3 +11,11 @@ export const tops = [
   xboxPP,
   undefined,
 ];
+
+export const topClassNames = [
+  "dragon-hoodie",
+  "good-bad-baby-tee",
+  "tribal-tank",
+  "xbox-pp",
+  "",
+];
